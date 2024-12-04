@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHalli :)</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            filter: contrast(130%);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 1;
+
+            transition: opacity 1s ease, transform 1s ease-in-out;
+        }
+
+        .overlay-text h1 {
+            font-size: 96px;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay-text p {
+            font-size: 32px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay-text button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background-color: #2B1F9A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .overlay-text button:hover {
+            background-color: #2B1F9A;
+        }
+
+        /* Active class for animation */
+        .overlay-text.active {
+            opacity: 1;
+            transform: translate(-50%, -40%);
+
+
+
+        }
+        
+
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 10px;
+            padding: 20px;
+            white-space: nowrap;
+            background-color: #f9f9f9;
+        }
+
+        .product {
+            display: inline-block;
+            min-width: 250px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .slider-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .header {
+            font-size: 96px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 20px;
+            white-space: nowrap;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            flex: 0 0 auto;
+            width: 250px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .slider-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 products per row */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .product a:hover {
+            color: #0056b3;
+        }
+        .full-width-image-container {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: hidden; /* Ensures no extra space or content goes beyond boundaries */
+            position: relative; /* Allows for overlays or additional content positioning */
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: 100vh; /* Maintains aspect ratio */
+            display: block; /* Removes any extra padding or margins */
+        }
+        .image-with-text {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+             /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-overlay h1 {
+            font-size: 96px;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            
+        }
+
+        .text-overlay p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .text-overlay button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: white;
+            color: rgb(83, 37, 181);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        .text-overlay button:hover {
+            background-color:  rgb(83, 37, 181);
+            color: white;
+        }
+        .about-us-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Adjust based on your content */
+            overflow: hidden; /* Prevent any content overflow */
+        }
+
+        .about-us-section img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-text {
+            position: absolute;
+            top: 50%; /* Centers vertically */
+            left: 50%; /* Centers horizontally */
+            transform: translate(-50%, -50%); /* Adjusts positioning */
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%; /* Optional: Adjusts width for responsiveness */
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        
+
+
+        
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- Logo at the top left corner -->
+            <a class="navbar-brand" href="techhtml.html">
+                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                TechHalli
+            </a>
+            <!-- Search bar centered -->
+            <form class="d-flex mx-auto" role="search" style="width: 50%;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button  style="color: #2B1F9A;border-color: #2B1F9A;" class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Navbar items aligned to the right -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Training Programs
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="skilllearning.html">Skill learning</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="skillswap.html">Skill Swapping</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Community
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Connect</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="videos.html">Videos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/login/sign.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--background images-->
+    <div class="bgimg">
+        <div class="image-container">
+            <img src="/images/bgimg.png" alt="Background Image">
+            <div class="overlay-text">
+                <h1 style="font-size: 96px;white-space: nowrap;">Karnataka's Art and Craft</h1>
+                <a href="#">
+                    <button>Shop</button>
+                </a>
+                <p style="font-size: 32px;">Made with passion and love.<br>Together we build.</p>
+
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div class="slider-container" id="slider">
+        <div class="image-container">
+            <div class="overlay-text">
+                <h2 style="font-size: 96px;padding-right: 350px;">Our </h2>
+                <h2 style="font-size: 96px;">Bestsellers! </h2>
+
+            </div>
+            <img style="width:100%; height:100vh;" src="/images/output.jpg" alt="Bestseller Image">
+        </div>
+        <div class="products-grid" id="grid-1">
+            <!-- First 6 products -->
+            <div class="product">
+                <img src="/images/claytoys.jpeg" alt="Clay Toys">
+                <p>Clay Toys</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/designer pot.jpg" alt="Designer Pot">
+                <p>Designer Pot</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/cloth.jpg" alt="Traditional Cloth">
+                <p>Traditional Cloth</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/woodentoys.webp" alt="Wooden Toys">
+                <p>Wooden Toys</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/vase.jpg" alt="Wooden Vase">
+                <p>Wooden Vase</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/handbag.jpg" alt="Handbag">
+                <p>Handbag</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="slider-buttons">
+                <button id="prev-grid1" disabled>← Prev</button>
+                <button id="next-grid1">Next →</button>
+            </div>
+            
+        </div>
+
+
+        <div class="products-grid" id="grid-2" style="display: none;">
+            <!-- Next 6 products -->
+            <div class="product">
+                <img src="/images/chittara drawing.jpg" alt="Clay Toys">
+                <p>Chittara drawing</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <br>
+                <img src="/images/gokak toys.jpg" alt="Designer Pot">
+                <br>
+                <p style="padding-top: 10px;">Gokak toys</p>
+                
+
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/rosewoodcarving.jpg" alt="Traditional Cloth">
+                <p>Rosewood Carving</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/kinhalwoodcarving.jpg" alt="Wooden Toys">
+                <p>Kinhal wood carving</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/skilsaree.jpg" alt="Wooden Vase">
+                <p>Silk Saree</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/Channapatna lacquerware.webp" alt="Handbag">
+                <p>Channapatna lacquerware</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="slider-buttons">
+                <button id="prev-grid2">← Prev</button>
+                <button id="next-grid2" disabled>Next →</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="image-with-text">
+        <img src="/images/bgimg2.png" alt="Background Image" class="responsive-image">
+        <div class="text-overlay">
+            <h1 style="white-space: nowrap;">HOME DECOR AND GIFTS</h1>
+            <button>Shop now</button>
+            <p style="font-size: 40px;">Find your favourtie piece.</p>
+            
+        </div>
+    </div>
+    <!--footer part-->
+    <div class="about-us">
+        <div class="about-us-section">
+            <img src="/images/bg4.jpg" alt="About Us Background">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>
+                    Welcome to TechHalli! We are dedicated to promoting Karnataka's rich art and craft heritage. 
+                    From traditional clay toys to intricate wood carvings, our mission is to connect you with local artisans and their exquisite creations.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+   
+    <div class="footer">
+        <div class="footer-container">
+            
+            <div class="social-media">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a href="#" target="_blank"><img src="/images/facebook-icon.png" alt="Facebook"> Facebook</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/twitter-icon.png" alt="Twitter"> Twitter</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/instagram-icon.png" alt="Instagram"> Instagram</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/linkedin-icon.png" alt="LinkedIn"> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="other-info">
+                <h2>More</h2>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechHalli. All rights reserved.</p>
+        </div>
+    </div>
+    
+    
+    
+</body>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('scroll', function () {
+        const overlayText = document.querySelector('.overlay-text');
+        const container = document.querySelector('.image-container');
+        const rect = container.getBoundingClientRect();
+        
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            overlayText.classList.add('active');
+        }
+    });
+
+    // Get references to grids and buttons
+    const grid1 = document.getElementById("grid-1");
+    const grid2 = document.getElementById("grid-2");
+    const prevBtnGrid1 = document.getElementById("prev-grid1");
+    const nextBtnGrid1 = document.getElementById("next-grid1");
+    const prevBtnGrid2 = document.getElementById("prev-grid2");
+    const nextBtnGrid2 = document.getElementById("next-grid2");
+
+    // Initially display the first grid and disable the "Prev" button
+    grid1.style.display = "grid";
+    grid2.style.display = "none";
+    prevBtnGrid1.disabled = true; // Disable "Prev" button for the first grid
+    nextBtnGrid1.disabled = false;
+
+    // Next button for grid 1
+    nextBtnGrid1.addEventListener("click", () => {
+        grid1.style.display = "none"; // Hide grid 1
+        grid2.style.display = "grid"; // Show grid 2
+        nextBtnGrid1.disabled = true; // Disable "Next" button for grid 1
+        prevBtnGrid1.disabled = true; // Ensure the "Prev" button on grid 1 is disabled
+        prevBtnGrid2.disabled = false; // Enable "Prev" button for grid 2
+        nextBtnGrid2.disabled = true; // Keep the "Next" button for grid 2 disabled initially
+    });
+
+    // Prev button for grid 2
+    prevBtnGrid2.addEventListener("click", () => {
+        grid2.style.display = "none"; // Hide grid 2
+        grid1.style.display = "grid"; // Show grid 1
+        nextBtnGrid1.disabled = false; // Enable "Next" button for grid 1
+        prevBtnGrid1.disabled = true; // Disable "Prev" button for grid 1
+        prevBtnGrid2.disabled = true; // Disable "Prev" button for grid 2
+        nextBtnGrid2.disabled = true; // Ensure the "Next" button for grid 2 stays disabled
+    });
+
+// Add additional logic for Next on grid 2 or Prev on grid 1 if needed.
+
+
+    </script>
+
+
+
+</html>
