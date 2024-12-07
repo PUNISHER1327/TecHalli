@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHalli :)</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            filter: contrast(130%);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 1;
+
+            transition: opacity 1s ease, transform 1s ease-in-out;
+        }
+
+        .overlay-text h1 {
+            font-size: 96px;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay-text p {
+            font-size: 32px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay-text button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background-color: #2B1F9A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .overlay-text button:hover {
+            background-color: #2B1F9A;
+        }
+
+        /* Active class for animation */
+        .overlay-text.active {
+            opacity: 1;
+            transform: translate(-50%, -40%);
+
+
+
+        }
+        
+
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 10px;
+            padding: 20px;
+            white-space: nowrap;
+            background-color: #f9f9f9;
+        }
+
+        .product {
+            display: inline-block;
+            min-width: 250px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .slider-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .header {
+            font-size: 96px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 20px;
+            white-space: nowrap;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            flex: 0 0 auto;
+            width: 250px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .slider-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 products per row */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .product a:hover {
+            color: #0056b3;
+        }
+        .full-width-image-container {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: hidden; /* Ensures no extra space or content goes beyond boundaries */
+            position: relative; /* Allows for overlays or additional content positioning */
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: 100vh; /* Maintains aspect ratio */
+            display: block; /* Removes any extra padding or margins */
+        }
+        .image-with-text {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+             /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-overlay h1 {
+            font-size: 96px;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            
+        }
+
+        .text-overlay p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .text-overlay button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: white;
+            color: rgb(83, 37, 181);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        .text-overlay button:hover {
+            background-color:  rgb(83, 37, 181);
+            color: white;
+        }
+        .about-us-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Adjust based on your content */
+            overflow: hidden; /* Prevent any content overflow */
+        }
+
+        .about-us-section img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-text {
+            position: absolute;
+            top: 50%; /* Centers vertically */
+            left: 50%; /* Centers horizontally */
+            transform: translate(-50%, -50%); /* Adjusts positioning */
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%; /* Optional: Adjusts width for responsiveness */
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+            
+/* Footer Main Container */
+        .footer {
+            background: linear-gradient(135deg, rgba(74, 48, 193, 0.92), rgba(74, 48, 193, 0.5));
+ /* Equivalent to #4a30c1ea */
+ /* Deep blue background */
+            color: white; /* White text color */
+            padding: 40px 0; /* Increased padding for spacing */
+            font-family: 'Roboto', Arial, sans-serif; /* Modern font */
+        }
+
+        /* Footer Container Layout */
+        .footer-container {
+            display: flex;
+            justify-content: space-between; /* Spread sections evenly */
+            flex-wrap: wrap; /* Stack sections on smaller screens */
+            max-width: 1200px;
+            margin: 0 auto; /* Center-align the footer */
+            padding: 0 20px;
+        }
+
+        /* Section Titles */
+        .footer h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-transform: uppercase; /* Capitalize titles */
+            border-bottom: 3px solid #4a30c1ea; /* Golden underline */
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* List Styling */
+        .footer ul {
+            list-style: none; /* Remove bullets */
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer li {
+            margin: 10px 0; /* Add space between items */
+        }
+
+        .footer a {
+            color: white; /* White link color */
+            text-decoration: none; /* Remove underline */
+            font-size: 16px;
+            display: flex; /* Align icon and text */
+            align-items: center; /* Vertically align icon with text */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth effects */
+        }
+
+        .footer a:hover {
+            color: #4a30c1ea; /* Golden text on hover */
+            transform: translateX(5px); /* Slight movement on hover */
+        }
+
+        /* Icons */
+        .footer img {
+            width: 25px; /* Icon size */
+            height: 25px;
+            margin-right: 10px; /* Space between icon and text */
+        }
+
+        /* Footer Bottom Section */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px; /* Space above bottom text */
+            font-size: 14px;
+            color: #DDD; /* Lighter gray for subtle contrast */
+            border-top: 1px solid #444; /* Thin top border for separation */
+            padding-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column; /* Stack sections */
+                align-items: center;
+                text-align: center; /* Center align text */
+            }
+            .footer ul {
+                margin: 0 auto;
+            }
+        }
+                
+        /* Overall container */
+        .about-us {
+            background-color: #333; /* Dark background */
+            color: #fff; /* White text */
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Section layout */
+        .about-us-section {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Space between text and image */
+        }
+
+        /* Image styling */
+        .about-us-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        /* Text styling */
+        .about-text {
+            flex: 1;
+            animation: slideIn 1.5s ease-in-out; /* Slide-in animation */
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: left; /* Align text to the left */
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* Keyframes for slide-in animation */
+        @keyframes slideIn {
+            from {
+            opacity: 0;
+            transform: translateX(-100%);
+            }
+            to {
+            opacity: 1;
+            transform: translateX(0);
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .details {
+            display: none;
+        }
+
+        .team-member {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            transition: background 0.3s;
+        }
+
+        .team-member:hover {
+            background: #f0f0f0;
+        }
+
+        .timeline {
+            animation: fadeIn 1s;
+        }
+        /* Enlarge navbar options and change color to purple on hover */
+        .navbar-nav .nav-link:hover {
+            color: rgb(50, 11, 113); /* Change text color to purple */
+            transform: scale(1.1); /* Slightly enlarge the text */
+            text-decoration: underline; /* Add underline on hover */
+            transition: all 0.5s ease; /* Smooth transition for hover effect */
+        }
+
+
+        /* Change the background color of the search button on hover */
+        .btn-outline-success:hover {
+            background-color: rgb(60, 0, 128); /* Change background to purple */
+            color: white; /* Change text color to white for better contrast */
+            border-color: rgb(70, 0, 128); /* Update border to match */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+        }
+        .logo-circle {
+            border-radius: 50%; /* Makes the image circular */
+            width: 40px; /* Consistent width */
+            height: 40px; /* Consistent height */
+            object-fit: cover; /* Ensures the image scales well within the circular shape */
+            border: 2px solid #2B1F9A; /* Optional: Adds a border around the image */
+        }
+        /* About Us section */
+        /* About Us section */
+        .aboutus {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .aboutus-image-wrapper {
+            position: relative;
+            flex: 1 1 calc(50% - 10px); /* Adjust size (50% width for the first image) */
+        }
+
+        .aboutus-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Optional: Rounded corners */
+        }
+
+        .aboutus-text {
+            position: absolute;
+            
+            top: 0; /* Position the text at the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for true center alignment */
+            text-align: center;
+             /* Semi-transparent background */
+            color: white; /* Text color */
+            padding: 10px 20px;
+            border-radius: 0 0 8px 8px; /* Rounded corners for bottom edges of the text box */
+            width: 100%; /* Ensure the text box spans the image width */
+        }
+
+        .aboutus-text h2 {
+            margin: 0 0 5px;
+            font-size: 20px; /* Adjust font size */
+            font-weight: bold;
+        }
+
+        .aboutus-text p {
+            margin: 0;
+            font-size: 14px; /* Adjust font size */
+            line-height: 1.4;
+        }
+        /* General Button Styling */
+        .shop-button {
+            background-color: #2B1F9A; /* Purple background */
+            color: white; /* Text color */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px 20px; /* Padding for larger clickable area */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: all 0.3s ease; /* Smooth transition for hover and responsiveness */
+        }
+
+        /* Hover Effect */
+        .shop-button:hover {
+            background-color: #5029bd; /* Darker purple on hover */
+            transform: scale(1.1); /* Slight enlargement on hover */
+        }
+
+        /* Container Styling */
+        .shop-button-container {
+            text-align: center; /* Center the button horizontally */
+            margin: 20px 0; /* Spacing around the button */
+        }
+
+        /* Responsive Button Styling */
+        @media (max-width: 768px) {
+            .shop-button {
+                font-size: 14px; /* Smaller font size for smaller screens */
+                padding: 8px 16px; /* Adjust padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .shop-button {
+                font-size: 12px; /* Further reduced font size */
+                padding: 6px 12px; /* Smaller padding */
+            }
+        }
+
+
+
+
+
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+
+
+
+
+        
+
+
+        
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <div class="navbar-brand">
+                <!-- Logo -->
+                <a href="https://descri-hr3phyup2e8mljqdrsvmn3.streamlit.app/" style="text-decoration: none;">
+                    <img  src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top logo-circle">
+                </a>
+                <!-- Text -->
+                <a href="techhtml.html" style="text-decoration: none;">
+                    <span style="font-weight: bold; font-size: 1.5rem; color: #000000;margin-top: 20px;">TechHalli</span>
+                </a>
+            </div>
+            
+            
+            
+            <!-- Toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Search bar and navbar items -->
+            <div class="collapse navbar-collapse mx-auto" id="navbarNav">
+                <form class="d-flex mx-auto my-2 my-lg-0" style="width: 50%;" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button  class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Shop</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Training Programs
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="skilllearning.html">Skill learning</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="skillswap.html">Skill Swapping</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Community
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Connect</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="videos.html">Videos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/sign.html">Sign Up</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!--background images-->
+    <div class="bgimg">
+        <div class="image-container">
+            <img src="/images/bgimg.png" alt="Background Image">
+            <div class="overlay-text">
+                <h1 style="font-size: 96px;white-space: nowrap;">Karnataka's Art and Craft</h1>
+                <div class="shop-button-container">
+                    <a href="https://www.amazon.in">
+                        <button class="shop-button">Shop</button>
+                    </a>
+                </div>
+                
+                <p style="font-size: 32px;">Made with passion and love.<br>Together we build.</p>
+
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div class="slider-container" id="slider">
+        <div class="image-container">
+            <div class="overlay-text">
+                <h2 style="font-size: 96px;padding-right: 350px;">Our </h2>
+                <h2 style="font-size: 96px;">Bestsellers! </h2>
+
+            </div>
+            <img style="width:100%; height:100vh;" src="/images/output.jpg" alt="Bestseller Image">
+        </div>
+        <div class="products-grid" id="grid-1">
+            <!-- First 6 products -->
+            <div class="product">
+                <img src="/images/claytoys.jpeg" alt="Clay Toys">
+                <p>Clay Toys</p>
+                <a href="https://amzn.in/d/hB3qkzA">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/designer pot.jpg" alt="Designer Pot">
+                <p>Designer Pot</p>
+                <a href="https://adityachauhan.8thwall.app/bonsai/">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/cloth.jpg" alt="Traditional Cloth">
+                <p>Traditional Cloth</p>
+                <a href="https://amzn.in/d/637ry26">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/woodentoys.webp" alt="Wooden Toys">
+                <p>Wooden Toys</p>
+                <a href=" https://amzn.in/d/i43T6m3">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/vase.jpg" alt="Wooden Vase">
+                <p>Wooden Vase</p>
+                <a href="https://adityachauhan.8thwall.app/pottery/">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/handbag.jpg" alt="Handbag">
+                <p>Handbag</p>
+                <a href=" https://amzn.in/d/83Qr2y4">View More</a>
+            </div>
+            <div class="slider-buttons">
+                <button id="prev-grid1" disabled>← Prev</button>
+                <button id="next-grid1">Next →</button>
+            </div>
+            
+        </div>
+
+
+        <div class="products-grid" id="grid-2" style="display: none;">
+            <!-- Next 6 products -->
+            <div class="product">
+                <img src="/images/chittara drawing.jpg" alt="Clay Toys">
+                <p>Chittara drawing</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <br>
+                <img src="/images/gokak toys.jpg" alt="Designer Pot">
+                <br>
+                <p style="padding-top: 10px;">Gokak toys</p>
+                
+
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/spec.jpg" alt="Traditional Cloth">
+                <p>Spectacles</p>
+                <a href="https://adityachauhan.8thwall.app/glasses/">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/kinhalwoodcarving.jpg" alt="Wooden Toys">
+                <p>Kinhal wood carving</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/skilsaree.jpg" alt="Wooden Vase">
+                <p>Silk Saree</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="product">
+                <img src="/images/Channapatna lacquerware.webp" alt="Handbag">
+                <p>Channapatna lacquerware</p>
+                <a href="#">View More</a>
+            </div>
+            <div class="slider-buttons">
+                <button id="prev-grid2">← Prev</button>
+                <button id="next-grid2" disabled>Next →</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="image-with-text">
+        <img src="/images/bgimg2.png" alt="Background Image" class="responsive-image">
+        <div class="text-overlay">
+            <h1 style="white-space: nowrap;">HOME DECOR AND GIFTS</h1>
+            <a href="https://www.amazon.in/s?k=home+decor&adgrpid=59664680580&ext_vrnc=hi&hvadid=294140942357&hvdev=m&hvlocphy=1007768&hvnetw=g&hvqmt=b&hvrand=15281765114446433785&hvtargid=kwd-10008386&hydadcr=13767_1786885&tag=googinhydrmob-21&ref=pd_sl_11u5kf21sj_b">
+                <button>Shop now</button>
+            </a>
+            <p style="font-size: 40px;">Find your favourtie piece.</p>
+            
+        </div>
+    </div>
+    <div class="aboutus">
+        <!-- First image with text at the top -->
+        <div class="aboutus-image-wrapper">
+            <img class="aboutus-img" src="/images/1.png" alt="About Us">
+            <div class="aboutus-text">
+                <h2 style="font-size: 70px;color: #9d97c6;">About Us</h2>
+                
+            </div>
+        </div>
+        <!-- Other images -->
+        <img class="aboutus-img" src="/images/2.png" alt="About Us 2">
+        <img class="aboutus-img" src="/images/3.png" alt="About Us 3">
+        <img class="aboutus-img" src="/images/4.png" alt="About Us 4">
+    </div>
+    
+    
+    
+
+   
+    <div class="footer">
+        <div class="footer-container">
+            
+            <div class="social-media">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a href="#" target="_blank"><img src="/images/fb.png" alt="Facebook"> Facebook</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/twitter.jpg" alt="Twitter"> Twitter</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/insta.svg.png" alt="Instagram"> Instagram</a></li>
+                    <li><a href="#" target="_blank"><img src="/images/linkendin.webp" alt="LinkedIn"> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="other-info">
+                <h2>More</h2>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechHalli. All rights reserved.</p>
+        </div>
+    </div>
+    
+    
+    
+</body>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('scroll', function () {
+        const overlayText = document.querySelector('.overlay-text');
+        const container = document.querySelector('.image-container');
+        const rect = container.getBoundingClientRect();
+        
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            overlayText.classList.add('active');
+        }
+    });
+
+    // Get references to grids and buttons
+    const grid1 = document.getElementById("grid-1");
+    const grid2 = document.getElementById("grid-2");
+    const prevBtnGrid1 = document.getElementById("prev-grid1");
+    const nextBtnGrid1 = document.getElementById("next-grid1");
+    const prevBtnGrid2 = document.getElementById("prev-grid2");
+    const nextBtnGrid2 = document.getElementById("next-grid2");
+
+    // Initially display the first grid and disable the "Prev" button
+    grid1.style.display = "grid";
+    grid2.style.display = "none";
+    prevBtnGrid1.disabled = true; // Disable "Prev" button for the first grid
+    nextBtnGrid1.disabled = false;
+
+    // Next button for grid 1
+    nextBtnGrid1.addEventListener("click", () => {
+        grid1.style.display = "none"; // Hide grid 1
+        grid2.style.display = "grid"; // Show grid 2
+        nextBtnGrid1.disabled = true; // Disable "Next" button for grid 1
+        prevBtnGrid1.disabled = true; // Ensure the "Prev" button on grid 1 is disabled
+        prevBtnGrid2.disabled = false; // Enable "Prev" button for grid 2
+        nextBtnGrid2.disabled = true; // Keep the "Next" button for grid 2 disabled initially
+    });
+
+    // Prev button for grid 2
+    prevBtnGrid2.addEventListener("click", () => {
+        grid2.style.display = "none"; // Hide grid 2
+        grid1.style.display = "grid"; // Show grid 1
+        nextBtnGrid1.disabled = false; // Enable "Next" button for grid 1
+        prevBtnGrid1.disabled = true; // Disable "Prev" button for grid 1
+        prevBtnGrid2.disabled = true; // Disable "Prev" button for grid 2
+        nextBtnGrid2.disabled = true; // Ensure the "Next" button for grid 2 stays disabled
+    });
+    function showDetails(card) {
+        const details = card.querySelector('.details');
+        details.style.display = 'block';
+    }
+
+    function hideDetails(card) {
+        const details = card.querySelector('.details');
+        details.style.display = 'none';
+    }
+
+    function highlight(member) {
+        member.style.backgroundColor = '#e0e0e0';
+    }
+
+    function unhighlight(member) {
+        member.style.backgroundColor = '';
+    }
+
+// Add additional logic for Next on grid 2 or Prev on grid 1 if needed.
+
+
+    </script>
+
+
+
+</html>

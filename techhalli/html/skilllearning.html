@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(to bottom, #f9f9f9, #e6f0ff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        }
+        .video-card {
+        flex: 1;
+        margin: 0 10px;
+        text-align: center;
+        background: #fff;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        }
+        .video-card iframe {
+        width: 100%;
+        height: 200px;
+        border: none;
+        border-radius: 8px;
+        }
+        .learn-button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        }
+        .learn-button:hover {
+        background-color: #0056b3;
+        }
+        body {
+            padding-top: 60px; /* Adjust based on navbar height */
+        }
+        .video-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card {
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+            background: linear-gradient(to bottom right, #ffffff, #e6f0ff);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-card a {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .video-card a.learn-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #ffdd40;
+            color: #2b1f9a;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-card a.learn-button:hover {
+            background-color: #ffbb00;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-card {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        /* Center the search bar container */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        /* Style the search bar */
+        .search-bar {
+            width: 80%; /* Adjust to make it responsive */
+            max-width: 300px; /* Set a fixed maximum width */
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 25px; /* Rounded corners */
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        /* Add a focus effect */
+        .search-bar:focus {
+            border-color: #007bff;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Placeholder styling for better readability */
+        .search-bar::placeholder {
+            color: #888;
+            font-style: italic;
+        }
+        
+
+
+
+
+
+
+        
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- Logo at the top left corner -->
+            <a class="navbar-brand" href="techhtml.html">
+                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                TechHalli
+            </a>
+            <!-- Search bar centered -->
+            
+            <!-- Navbar items aligned to the right -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="techhtml.html">Shop</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Training Programs
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="skilllearning.html">Skill learning</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="skillswap.html">Skill Swapping</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Community
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Connect</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="videos.html">Videos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/login/sign.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <hr>
+
+        
+
+    <div class="search-container">
+        <input type="text" class="search-bar" id="searchBar" placeholder="Search for a skill...">
+    </div>
+    
+
+    <!-- Row 1 -->
+    <div class="row">
+        <div class="video-card" data-keywords="e-commerce online business digital marketing">
+            <iframe src="https://www.youtube.com/embed/so-VUmd_6RY" title="E-Commerce"></iframe>
+            <a>E-Commerce<br></a>
+            <a href="https://youtu.be/so-VUmd_6RY" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="financial management money planning">
+            <iframe src="https://www.youtube.com/embed/pel6alvfBp4" title="Financial Management"></iframe>
+            <a>Financial Management<br></a>
+            <a href="https://www.youtube.com/watch?v=pel6alvfBp4" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="compliance legal knowledge regulations">
+            <iframe src="https://www.youtube.com/embed/CYEOz1FgCSw" title="Compliance and Legal Knowledge"></iframe>
+            <a>Compliance and Legal Knowledge<br></a>
+            <a href="https://youtu.be/CYEOz1FgCSw" class="learn-button">Learn</a>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+        <div class="video-card" data-keywords="digital literacy technology basics computer">
+            <iframe src="https://www.youtube.com/embed/5H7pybXg8IE" title="Digital Literacy"></iframe>
+            <a>Digital Literacy<br></a>
+            <a href="https://youtu.be/5H7pybXg8IE" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="negotiation skills communication business">
+            <iframe src="https://www.youtube.com/embed/Z3HJCQJ2Lmo" title="Negotiation Skills"></iframe>
+            <a>Negotiation Skills<br></a>
+            <a href="https://youtu.be/Z3HJCQJ2Lmo" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="problem solving critical thinking logic">
+            <iframe src="https://www.youtube.com/embed/hiqoCvPs_Jc" title="Problem Solving"></iframe>
+            <a>Problem Solving<br></a>
+            <a href="https://youtu.be/hiqoCvPs_Jc" class="learn-button">Learn</a>
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+        <div class="video-card" data-keywords="salesmanship marketing skills sales">
+            <iframe src="https://www.youtube.com/embed/aM61r0NzHlM" title="Salesmanship"></iframe>
+            <a>Salesmanship<br></a>
+            <a href="https://youtu.be/aM61r0NzHlM" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="networking professional relationships connections">
+            <iframe src="https://www.youtube.com/embed/QQzD95tKsu8" title="Networking"></iframe>
+            <a>Networking<br></a>
+            <a href="https://youtu.be/QQzD95tKsu8" class="learn-button">Learn</a>
+        </div>
+        <div class="video-card" data-keywords="emotional intelligence soft skills empathy">
+            <iframe src="https://www.youtube.com/embed/D6_J7FfgWVc" title="Emotional Intelligence"></iframe>
+            <a>Emotional Intelligence<br></a>
+            <a href="https://youtu.be/D6_J7FfgWVc" class="learn-button">Learn</a>
+        </div>
+    </div>
+
+    <!-- Add rows 4 to 7 here with similar changes... -->
+
+    <script>
+        const searchBar = document.querySelector('#searchBar');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        searchBar.addEventListener('input', () => {
+            const query = searchBar.value.toLowerCase();
+
+            videoCards.forEach(card => {
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                if (keywords.includes(query)) {
+                    card.style.display = 'block'; // Show matching cards
+                } else {
+                    card.style.display = 'none'; // Hide non-matching cards
+                }
+            });
+        });
+    </script>
+    <footer style="background-color: #007bff; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 TechHalli. All Rights Reserved.</p>
+        <a href="#" style="color: #ffdd40; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+        <a href="#" style="color: #ffdd40; text-decoration: none; margin: 0 10px;">Contact Us</a>
+    </footer>
+    
+    
+
+
+    
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+</html>

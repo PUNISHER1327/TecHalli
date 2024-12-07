@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-submit {
+            background-color: #2B1F9A; /* Primary button color */
+            color: white;
+            width: 100%;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+        /* Hover effect for the submit button */
+        .btn-submit:hover {
+            background-color: #1A0E73; /* Darker shade on hover */
+        }
+        .skills-list {
+            margin-top: 30px;
+        }
+        .swap-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        /* Background styling */
+        .background {
+            background-image: url('/images/swapimg.jpg'); /* Background image path */
+            background-size: cover; /* Cover the entire container */
+            background-position: center; /* Center the image */
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container content styling */
+        .container.content {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for contrast */
+            border-radius: 10px; /* Rounded corners */
+            padding: 30px;
+            max-width: 600px; /* Limit the width for readability */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            text-align: center;
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 5px; /* Rounded input fields */
+            padding: 10px;
+        }
+
+        /* Text alignment */
+        .text-center {
+            margin-bottom: 15px;
+        }
+
+        /* Skills list styling */
+        .skills-list {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- Logo at the top left corner -->
+            <a class="navbar-brand" href="techhtml.html">
+                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                TechHalli
+            </a>
+            <!-- Search bar centered -->
+            <form class="d-flex mx-auto" role="search" style="width: 50%;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button style="color: #2B1F9A;border-color: #2B1F9A;" class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Navbar items aligned to the right -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Training Programs
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="skilllearning.html">Skill learning</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="skillswap.html">Skill Swapping</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Community
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Connect</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="videos.html">Videos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/login/sign.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="background">
+        <div class="container content">
+            <h2 class="text-center">Skill Swap</h2>
+            <p class="text-center">Enter the skill you want to learn and the skill you can teach. Connect with others who can help!</p>
+
+            <form id="skillSwapForm">
+                <div class="form-group">
+                    <label for="learnSkill">Skill You Want to Learn</label>
+                    <input type="text" class="form-control" id="learnSkill" placeholder="e.g., Web Development" required>
+                </div>
+                <div class="form-group">
+                    <label for="teachSkill">Skill You Can Teach</label>
+                    <input type="text" class="form-control" id="teachSkill" placeholder="e.g., Graphic Design" required>
+                </div>
+                <button type="submit" class="btn btn-submit">Submit</button>
+            </form>
+
+            <div class="skills-list" id="skillsList">
+                <!-- List of skill swaps will appear here -->
+            </div>
+
+            <!-- Freelancing Button -->
+            <div class="text-center">
+                <p>Or</p>
+                <a href="freelancing.html" class="btn btn-primary" style="width: 100%;">Freelancing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('skillSwapForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get the user input
+            var learnSkill = document.getElementById('learnSkill').value;
+            var teachSkill = document.getElementById('teachSkill').value;
+
+            // Clear the input fields after submission
+            document.getElementById('learnSkill').value = '';
+            document.getElementById('teachSkill').value = '';
+
+            // Create a new card for the entered skills
+            var newCard = document.createElement('div');
+            newCard.classList.add('swap-card');
+            newCard.innerHTML = `
+                <h5 class="text-center">Looking to Learn: ${learnSkill}</h5>
+                <p class="text-center">Can Teach: ${teachSkill}</p>
+                <button class="btn btn-primary btn-block">Contact</button>
+            `;
+
+            // Append the new card to the list
+            document.getElementById('skillsList').appendChild(newCard);
+        });
+    </script>
+    <script>
+        document.getElementById('skillSwapForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+    
+            // Get the user input
+            var learnSkill = document.getElementById('learnSkill').value;
+            var teachSkill = document.getElementById('teachSkill').value;
+    
+            // Clear the input fields after submission
+            document.getElementById('learnSkill').value = '';
+            document.getElementById('teachSkill').value = '';
+    
+            // Send a POST request to the backend
+            fetch('http://localhost:3000/match-skills', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ learnSkill, teachSkill })
+            })
+            .then(response => response.json())
+            .then(matchingUsers => {
+                // Clear previous results
+                document.getElementById('skillsList').innerHTML = '';
+    
+                // Create cards for each matching user
+                matchingUsers.forEach(user => {
+                    var newCard = document.createElement('div');
+                    newCard.classList.add('swap-card');
+                    newCard.innerHTML = `
+                        <h5 class="text-center">${user.Name}</h5>
+                        <p class="text-center">Email: ${user.Email}</p>
+                        <p class="text-center">Skills: ${user.Skills}</p>
+                        <button class="btn btn-primary btn-block">Contact</button>
+                    `;
+                    document.getElementById('skillsList').appendChild(newCard);
+                });
+    
+                // If no users match
+                if (matchingUsers.length === 0) {
+                    var noMatchCard = document.createElement('div');
+                    noMatchCard.classList.add('swap-card');
+                    noMatchCard.innerHTML = `<h5 class="text-center">No matching users found.</h5>`;
+                    document.getElementById('skillsList').appendChild(noMatchCard);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                var errorCard = document.createElement('div');
+                errorCard.classList.add('swap-card');
+                errorCard.innerHTML = `<h5 class="text-center">An error occurred while fetching data.</h5>`;
+                document.getElementById('skillsList').appendChild(errorCard);
+            });
+        });
+    </script>
+
+</body>
+</html>

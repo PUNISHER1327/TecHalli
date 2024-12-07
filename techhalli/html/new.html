@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Skill Search</h1>
+        <div class="mb-3">
+            <label for="skillInput" class="form-label">Enter a Skill:</label>
+            <input type="text" id="skillInput" class="form-control" placeholder="Type a skill...">
+        </div>
+        <button id="searchButton" class="btn btn-primary w-100">Search</button>
+        <div id="resultSection" class="mt-4"></div>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', async () => {
+            const skill = document.getElementById('skillInput').value.trim();
+            if (!skill) {
+                alert('Please enter a skill!');
+                return;
+            }
+
+            const response = await fetch('/search-skill', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ skill }),
+            });
+
+            const data = await response.json();
+
+            const resultSection = document.getElementById('resultSection');
+            resultSection.innerHTML = ''; // Clear previous results
+
+            if (data.relatedSkills && data.relatedSkills.length > 0) {
+                const ul = document.createElement('ul');
+                ul.classList.add('list-group');
+
+                data.relatedSkills.forEach(skill => {
+                    const li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.textContent = skill;
+                    ul.appendChild(li);
+                });
+
+                resultSection.appendChild(ul);
+            } else {
+                resultSection.innerHTML = '<p class="text-danger">No related skills found!</p>';
+            }
+        });
+    </script>
+</body>
+</html>
